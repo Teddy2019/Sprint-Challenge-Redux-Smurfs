@@ -65,7 +65,7 @@ const rootReducer = (state = initialState, action) => {
           return {
               ...state,
               addingSmurf: false,
-              error: action.payload.msg,
+              error: action.payload.Error,
           }
       }
  

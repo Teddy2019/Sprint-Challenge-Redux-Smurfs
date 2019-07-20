@@ -31,3 +31,18 @@ export const getSmurfs = () => dispatch => {
 	.catch((err)=> dispatch({type: GET_SMURFS_FAILED, payload: err.response.data }));
   
 }
+
+export function postSmurf(newSumurf) {
+	return (dispatch) => {
+		dispatch({ type: POST_SMURFS_START })
+
+		return axios.post('http://localhost:3333/smurfs',  newSumurf )
+			.then((res) => {
+				dispatch({ type: POST_SMURFS_SUCCESS, payload: res.data })
+			})
+			.catch((err) => {
+				const payload = err.response ? err.response.data : err
+				dispatch({ type: POST_SMURFS_FAILED, payload })
+			})
+	}
+}
