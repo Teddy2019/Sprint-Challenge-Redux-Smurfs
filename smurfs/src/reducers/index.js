@@ -1,7 +1,12 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { GET_SMURFS_START, GET_SMURFS_SUCCESS, GET_SMURFS_FAILED} from '../actions'
+import { GET_SMURFS_START, 
+  GET_SMURFS_SUCCESS, 
+  GET_SMURFS_FAILED,
+  POST_SMURFS_START,
+  POST_SMURFS_SUCCESS,
+  POST_SMURFS_FAILED } from '../actions'
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this */
  
@@ -40,7 +45,7 @@ const rootReducer = (state = initialState, action) => {
           return {
               ...state,
               isLoading: false,
-              error: action.payload.error,
+              error: action.payload.msg,
           }
  
       case  POST_SMURFS_START: {
@@ -52,7 +57,7 @@ const rootReducer = (state = initialState, action) => {
       case  POST_SMURFS_SUCCESS: {
           return {
               ...state,
-              smurfs: action.payload,,
+              smurfs: action.payload,
               error: null,
           }
       }
@@ -60,7 +65,7 @@ const rootReducer = (state = initialState, action) => {
           return {
               ...state,
               addingSmurf: false,
-              error: action.payload.error,
+              error: action.payload.msg,
           }
       }
  
